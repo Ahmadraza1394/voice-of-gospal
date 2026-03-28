@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: #171717;
+  background: #ffffff;
+  font-family: "Playfair Display", Helvetica, sans-serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brand-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-brand-primary/90 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-brand-accent text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-brand-accent/90 hover:shadow-lg;
+  }
+
+  .btn-outline {
+    @apply border-2 border-brand-primary text-brand-primary px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-brand-primary hover:text-white;
+  }
+
+  .section-light {
+    @apply bg-background-light;
+  }
+
+  .card-bg {
+    @apply bg-white shadow-sm rounded-lg border border-gray-100;
+  }
+
+  .footer-bg {
+    @apply bg-footer text-white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

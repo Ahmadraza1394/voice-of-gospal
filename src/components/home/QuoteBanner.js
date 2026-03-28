@@ -1,0 +1,14 @@
+export default function QuoteBanner() {
+  return (
+    <section className="bg-brand-primary py-12 md:py-16 lg:py-20">
+      <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        <blockquote className="font-playfair text-2xl md:text-3xl lg:text-4xl font-medium text-white italic mb-3">
+          &ldquo;The World is Our Parish&rdquo;
+        </blockquote>
+        <p className="text-brand-accent text-sm font-semibold tracking-widest uppercase">
+          Mark 16:15
+        </p>
+      </div>
+    </section>
+  );
+}
