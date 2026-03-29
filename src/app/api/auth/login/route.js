@@ -7,7 +7,13 @@ export async function POST(req) {
 
     // Simple authentication - in production, use hashed passwords
     const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@voiceofgospel.com";
-    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
+    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "123456789";
+
+    console.log("Login attempt:", { email, hasPassword: !!password });
+    console.log("Expected credentials:", {
+      ADMIN_EMAIL,
+      hasAdminPassword: !!ADMIN_PASSWORD,
+    });
 
     if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
       const token = generateToken({ email, role: "admin" });
@@ -21,12 +27,13 @@ export async function POST(req) {
 
     return NextResponse.json(
       { success: false, message: "Invalid credentials" },
-      { status: 401 }
+      { status: 401 },
     );
   } catch (error) {
+    console.error("Login API error:", error);
     return NextResponse.json(
       { success: false, message: "Server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

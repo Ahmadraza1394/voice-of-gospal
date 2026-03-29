@@ -18,6 +18,8 @@ export default function AdminLogin() {
     setError("");
     setLoading(true);
 
+    console.log("Form submission started with data:", formData);
+
     try {
       const res = await fetch("/api/auth/login", {
         method: "POST",
@@ -27,18 +29,23 @@ export default function AdminLogin() {
         body: JSON.stringify(formData),
       });
 
+      console.log("Response status:", res.status);
       const data = await res.json();
+      console.log("Response data:", data);
 
       if (data.success) {
-        // Set cookie for server-side authentication
-        document.cookie = `adminToken=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}; secure; samesite=strict`;
+        // Set cookie for server-side authentication (remove secure flag for localhost)
+        document.cookie = `adminToken=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}; samesite=strict`;
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminUser", JSON.stringify(data.user));
+        console.log("Login successful, redirecting to dashboard");
         router.push("/admin/dashboard");
       } else {
+        console.log("Login failed:", data.message);
         setError(data.message || "Invalid credentials");
       }
     } catch (err) {
+      console.error("Login error:", err);
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
