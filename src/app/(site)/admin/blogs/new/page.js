@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import TiptapEditor from "@/components/admin/TiptapEditor";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 export default function NewBlog() {
   const router = useRouter();
@@ -30,6 +31,13 @@ export default function NewBlog() {
     setFormData({
       ...formData,
       content,
+    });
+  };
+
+  const handleImageChange = (url) => {
+    setFormData({
+      ...formData,
+      image: url,
     });
   };
 
@@ -131,33 +139,13 @@ export default function NewBlog() {
             />
           </div>
 
-          {/* Image URL */}
+          {/* Image Upload */}
           <div className="bg-white rounded-lg shadow p-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Featured Image URL *
-            </label>
-            <input
-              type="url"
-              name="image"
-              required
+            <ImageUpload
               value={formData.image}
-              onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-brand-primary"
-              placeholder="https://example.com/image.jpg"
+              onChange={handleImageChange}
+              label="Featured Image"
             />
-            {formData.image && (
-              <div className="mt-4">
-                <p className="text-sm text-gray-600 mb-2">Preview:</p>
-                <img
-                  src={formData.image}
-                  alt="Preview"
-                  className="w-full max-w-md h-48 object-cover rounded"
-                  onError={(e) => {
-                    e.target.style.display = "none";
-                  }}
-                />
-              </div>
-            )}
           </div>
 
           {/* Meta Information */}

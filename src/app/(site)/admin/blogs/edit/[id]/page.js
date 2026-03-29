@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import TiptapEditor from "@/components/admin/TiptapEditor";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 export default function EditBlog() {
   const router = useRouter();
