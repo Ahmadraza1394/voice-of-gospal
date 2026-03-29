@@ -6,8 +6,8 @@ export async function POST(req) {
     const { email, password } = await req.json();
 
     // Simple authentication - in production, use hashed passwords
-    const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@voiceofgospel.com";
-    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "123456789";
+    const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
     console.log("Login attempt:", { email, hasPassword: !!password });
     console.log("Expected credentials:", {

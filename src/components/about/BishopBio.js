@@ -46,10 +46,10 @@ export default function BishopBio() {
             </p>
 
             <Link
-              href="/about/bishop"
+              href="/contact"
               className="inline-block border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-8 py-3 rounded-sm font-semibold transition-all uppercase tracking-wide text-sm"
             >
-              Read Full Bio
+              Contact Us
             </Link>
           </div>
         </div>

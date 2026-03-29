@@ -8,7 +8,7 @@ const ministries = [
     title: "Free Food Pantry",
     description:
       "Our food pantry serves the Boston community with compassion, providing essential groceries to help families meet their basic needs of life through Christ.",
-    link: "/food-pantry",
+    link: "/global-mission/food-pantry",
   },
   {
     image: "/images/VOICE-OF-THE-GOSPEL-TABERNACLE-BANNER-8.png",
@@ -16,7 +16,7 @@ const ministries = [
     title: "Help Haiti Mission",
     description:
       "Since 1980, we have been supporting education and spiritual growth for over 250 young people with education and spiritual care.",
-    link: "/give",
+    link: "/global-mission/haiti",
   },
   {
     image: "/images/VOICE-OF-THE-GOSPEL-TABERNACLE-BANNER-11.png",
@@ -24,7 +24,7 @@ const ministries = [
     title: "Community Center",
     description:
       "Our community center is a hub for outreach events, social programs that uplift our neighborhood. We bring hope where it&apos;s needed most.",
-    link: "/ministries",
+    link: "/global-mission",
   },
   {
     image: "/images/VOICE-OF-THE-GOSPEL-TABERNACLE-BANNER-1.png",

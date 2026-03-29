@@ -9,8 +9,9 @@ const actions = [
     ),
     number: "1.",
     title: "Pray",
-    description: "Join our dedicated prayer meetings and intercede for our missions.",
-    link: "/contact",
+    description:
+      "Join our dedicated prayer meetings and intercede for our missions.",
+    link: "/visit",
   },
   {
     icon: (
@@ -20,7 +21,8 @@ const actions = [
     ),
     number: "2.",
     title: "Give",
-    description: "Support our local and global missions financially to expand our reach.",
+    description:
+      "Support our local and global missions financially to expand our reach.",
     link: "/give",
   },
   {
@@ -31,8 +33,9 @@ const actions = [
     ),
     number: "3.",
     title: "Serve",
-    description: "Volunteer your time and talents in any of our active ministry programs.",
-    link: "/ministries",
+    description:
+      "Volunteer your time and talents in any of our active ministry programs.",
+    link: "/contact",
   },
 ];
 
