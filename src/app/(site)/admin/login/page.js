@@ -15,6 +15,7 @@ export default function AdminLogin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     setError("");
     setLoading(true);
 
@@ -34,16 +35,18 @@ export default function AdminLogin() {
       console.log("Response data:", data);
 
       if (data.success) {
-        // Set cookie for server-side authentication (remove secure flag for localhost)
-        document.cookie = `adminToken=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}; samesite=strict`;
+        // Set cookie for server-side authentication
+        document.cookie = `adminToken=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}`;
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminUser", JSON.stringify(data.user));
-        console.log("Login successful, redirecting to dashboard");
+        console.log("Login successful, cookie set, redirecting to dashboard");
 
-        // Add small delay and use router.replace for better navigation
-        setTimeout(() => {
-          router.replace("/admin/dashboard");
-        }, 100);
+        // Set loading to false first, then redirect
+        setLoading(false);
+
+        // Use router.push with refresh
+        router.push("/admin/dashboard");
+        router.refresh();
       } else {
         console.log("Login failed:", data.message);
         setError(data.message || "Invalid credentials");

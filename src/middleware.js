@@ -9,28 +9,34 @@ export function middleware(request) {
       return NextResponse.next();
     }
 
-    // Check for authentication token
+    // Check for authentication token in cookies
     const token = request.cookies.get("adminToken")?.value;
-    
+
     if (!token) {
-      // Redirect to login if no token
+      console.log("No token found, redirecting to login");
       return NextResponse.redirect(new URL("/admin/login", request.url));
     }
 
-    // Verify the token
-    const decoded = verifyToken(token);
-    if (!decoded) {
-      // Redirect to login if token is invalid
+    try {
+      // Verify the token
+      const decoded = verifyToken(token);
+      if (!decoded) {
+        console.log("Invalid token, redirecting to login");
+        return NextResponse.redirect(new URL("/admin/login", request.url));
+      }
+
+      console.log("Token valid, allowing access to:", request.nextUrl.pathname);
+      // Token is valid, allow access
+      return NextResponse.next();
+    } catch (error) {
+      console.error("Token verification error:", error);
       return NextResponse.redirect(new URL("/admin/login", request.url));
     }
-
-    // Token is valid, allow access
-    return NextResponse.next();
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: [],
 };

@@ -131,7 +131,7 @@ export default function Navbar() {
 
             <Link
               href="/give"
-              className="bg-brand-primary text-white px-6 py-2 rounded-full text-sm font-semibold transition-all hover:bg-brand-primary/90 hover:shadow-lg"
+              className="bg-green-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all hover:bg-green-700 hover:shadow-lg"
             >
               Give Now
             </Link>
@@ -244,7 +244,7 @@ export default function Navbar() {
 
               <Link
                 href="/give"
-                className="block mt-4 bg-brand-primary text-white px-6 py-3 rounded-full text-center text-sm font-semibold transition-all hover:bg-brand-primary/90"
+                className="block mt-4 bg-green-600 text-white px-6 py-3 rounded-full text-center text-sm font-semibold transition-all hover:bg-green-700"
                 onClick={() => setIsOpen(false)}
               >
                 Give Now
