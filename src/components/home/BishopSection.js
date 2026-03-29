@@ -61,7 +61,7 @@ export default function BishopSection() {
             <div className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 bg-white rounded-2xl p-4 shadow-lg">
               <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <Image
-                  src="/images/Bishop-picture-p7gispmn9pcj3kpqxapsbc90mj10yo7iw5a6vd3r84.jpeg"
+                  src="/images/Bishop-picture.jpeg"
                   alt="Bishop Nicolas Homicil"
                   fill
                   className="object-cover"

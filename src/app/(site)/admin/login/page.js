@@ -30,6 +30,8 @@ export default function AdminLogin() {
       const data = await res.json();
 
       if (data.success) {
+        // Set cookie for server-side authentication
+        document.cookie = `adminToken=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}; secure; samesite=strict`;
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminUser", JSON.stringify(data.user));
         router.push("/admin/dashboard");
