@@ -28,6 +28,12 @@ export default function LiveStream() {
 
   const extractYouTubeId = (url) => {
     if (!url) return null;
+
+    // Handle /live/ URLs
+    const liveMatch = url.match(/\/live\/([a-zA-Z0-9_-]{11})/);
+    if (liveMatch) return liveMatch[1];
+
+    // Handle standard YouTube URLs
     const regExp =
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=))([^#\&\?]*).*/;
     const match = url.match(regExp);

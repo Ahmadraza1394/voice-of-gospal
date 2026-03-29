@@ -34,7 +34,9 @@ export default function LivestreamManagementPage() {
       if (data.success) {
         setFormData({
           youtubeUrl: data.data.youtubeUrl || "",
-          streamTitle: data.data.streamTitle || "Live Stream — Join Us Every Sunday 9:00 AM",
+          streamTitle:
+            data.data.streamTitle ||
+            "Live Stream — Join Us Every Sunday 9:00 AM",
           serviceTimes: data.data.serviceTimes || [
             { day: "SUNDAY", time: "9:00 AM" },
             { day: "MIDWEEK", time: "6:00 PM" },
@@ -109,7 +111,14 @@ export default function LivestreamManagementPage() {
 
   const extractYouTubeId = (url) => {
     if (!url) return null;
-    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=))([^#\&\?]*).*/;
+
+    // Handle /live/ URLs
+    const liveMatch = url.match(/\/live\/([a-zA-Z0-9_-]{11})/);
+    if (liveMatch) return liveMatch[1];
+
+    // Handle standard YouTube URLs
+    const regExp =
+      /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=))([^#\&\?]*).*/;
     const match = url.match(regExp);
     return match && match[7].length === 11 ? match[7] : null;
   };
@@ -186,7 +195,9 @@ export default function LivestreamManagementPage() {
             {/* Preview */}
             {videoId && (
               <div className="mt-4">
-                <p className="text-sm font-medium text-gray-700 mb-2">Preview:</p>
+                <p className="text-sm font-medium text-gray-700 mb-2">
+                  Preview:
+                </p>
                 <div className="relative aspect-video w-full rounded overflow-hidden">
                   <iframe
                     src={`https://www.youtube.com/embed/${videoId}`}
