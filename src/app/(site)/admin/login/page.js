@@ -39,7 +39,11 @@ export default function AdminLogin() {
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminUser", JSON.stringify(data.user));
         console.log("Login successful, redirecting to dashboard");
-        router.push("/admin/dashboard");
+
+        // Add small delay and use router.replace for better navigation
+        setTimeout(() => {
+          router.replace("/admin/dashboard");
+        }, 100);
       } else {
         console.log("Login failed:", data.message);
         setError(data.message || "Invalid credentials");
@@ -67,10 +71,11 @@ export default function AdminLogin() {
           <div className="flex justify-center mb-6">
             <div className="relative w-20 h-20">
               <Image
-                src="/images/logo.png"
+                src="/images/1-VOICE-OF-THE-GOSPEL-TABERNACLE-LOGO-.png"
                 alt="Voice of Gospel"
                 fill
                 className="object-contain"
+                sizes="80px"
               />
             </div>
           </div>

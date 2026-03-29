@@ -35,7 +35,7 @@ export default function Footer() {
                   width={80}
                   height={80}
                   className="object-contain"
-                  style={{ height: "auto" }}
+                  style={{ width: "auto", height: "auto" }}
                 />
               </Link>
               <p className="text-sm text-gray-300 mb-6">
