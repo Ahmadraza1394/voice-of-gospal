@@ -142,7 +142,7 @@ export default function ContactInfo() {
                     <p className="font-semibold text-gray-900 text-sm mb-1">
                       Phone
                     </p>
-                    <p className="text-gray-600 text-sm">+1 857-312-0663</p>
+                    <p className="text-gray-600 text-sm">(617) 980-7866</p>
                   </div>
                 </div>
 

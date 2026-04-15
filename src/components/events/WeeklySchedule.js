@@ -2,22 +2,24 @@ const schedules = [
   {
     icon: (
       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1 16.93c-3.95-.49-7-3.85-7-7.84V6.3l6-2.25v14.88zm2-14.88l6 2.25v3.79c0 3.99-3.05 7.35-7 7.84V4.05z" />
+        <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
       </svg>
     ),
-    title: "Sunday Service",
-    time: "9:00 AM",
-    description: "Join us for our main worship gathering and teaching.",
+    title: "Sunday School",
+    time: "10:00 AM",
+    description:
+      "Biblical teaching and fellowship for all ages to grow in faith.",
   },
   {
     icon: (
       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+        <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1 16.93c-3.95-.49-7-3.85-7-7.84V6.3l6-2.25v14.88zm2-14.88l6 2.25v3.79c0 3.99-3.05 7.35-7 7.84V4.05z" />
       </svg>
     ),
-    title: "Midweek Service",
-    time: "6:00 PM",
-    description: "Every Wednesday night Bible study and fellowship.",
+    title: "Sunday Worship Service",
+    time: "11:00 AM",
+    description:
+      "Main service featuring worship and powerful ministry of the Word.",
   },
   {
     icon: (
@@ -25,9 +27,31 @@ const schedules = [
         <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
       </svg>
     ),
-    title: "Prayer Meeting",
-    time: "6:00 PM",
-    description: "Friday evening intercessory prayer and worship.",
+    title: "Wednesday Prayer",
+    time: "8:30 AM - 12:00 PM",
+    description:
+      "Morning prayer gathering seeking God's presence and guidance.",
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z" />
+      </svg>
+    ),
+    title: "Thursday Online Bible Study",
+    time: "8:00 PM - 9:00 PM",
+    description:
+      "Interactive online study diving deep into God's Word together.",
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
+      </svg>
+    ),
+    title: "Friday Night Prayer",
+    time: "8:00 PM - 12:00 AM",
+    description: "Extended night of worship, prayer, and seeking God's face.",
   },
 ];
 
@@ -46,7 +70,7 @@ export default function WeeklySchedule() {
         </div>
 
         {/* Schedule Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8">
           {schedules.map((schedule, index) => (
             <div
               key={index}

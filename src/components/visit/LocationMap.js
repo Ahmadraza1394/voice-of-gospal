@@ -63,7 +63,7 @@ export default function LocationMap() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">Phone</p>
-                  <p className="text-gray-600">+1 857-312-0663</p>
+                  <p className="text-gray-600">(617) 980-7866</p>
                 </div>
               </div>
 
