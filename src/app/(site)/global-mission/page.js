@@ -1,4 +1,5 @@
 import GlobalMissionHero from "@/components/global-mission/GlobalMissionHero";
+import GlobalMissionOverview from "@/components/global-mission/GlobalMissionOverview";
 import GlobalMissionContent from "@/components/global-mission/GlobalMissionContent";
 import GlobalMissionMap from "@/components/global-mission/GlobalMissionMap";
 import PrayerCTA from "@/components/global-mission/PrayerCTA";
@@ -12,6 +13,7 @@ export default function GlobalMissionPage() {
   return (
     <>
       <GlobalMissionHero />
+      <GlobalMissionOverview />
       <GlobalMissionContent />
       <GlobalMissionMap />
       <PrayerCTA />

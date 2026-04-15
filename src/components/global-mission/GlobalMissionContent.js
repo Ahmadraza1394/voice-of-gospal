@@ -2,11 +2,23 @@ import Link from "next/link";
 
 const countries = [
   { id: "haiti", label: "Haiti", path: "/global-mission/haiti" },
-  { id: "dominican-republic", label: "Dominican Republic", path: "/global-mission/dominican-republic" },
+  {
+    id: "dominican-republic",
+    label: "Dominican Republic",
+    path: "/global-mission/dominican-republic",
+  },
   { id: "nigeria", label: "Nigeria", path: "/global-mission/nigeria" },
-  { id: "ivory-coast", label: "Ivory Coast", path: "/global-mission/ivory-coast" },
+  {
+    id: "ivory-coast",
+    label: "Ivory Coast",
+    path: "/global-mission/ivory-coast",
+  },
   { id: "uganda", label: "Uganda", path: "/global-mission/uganda" },
-  { id: "food-pantry", label: "Food Pantry", path: "/global-mission/food-pantry" },
+  {
+    id: "food-pantry",
+    label: "Food Pantry",
+    path: "/global-mission/food-pantry",
+  },
 ];
 
 export default function GlobalMissionContent() {
@@ -19,13 +31,18 @@ export default function GlobalMissionContent() {
             Reaching Every Nation
           </h2>
           <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-8">
-            At Voice of the Gospel Tabernacle, our mandate extends far beyond borders. We are dedicated to reaching continents through health, education, food security, housing initiatives, and the life-changing power of the Gospel.
+            At Voice of the Gospel Tabernacle, our mandate extends far beyond
+            borders. We are dedicated to reaching continents through health,
+            education, food security, housing initiatives, and the life-changing
+            power of the Gospel.
           </p>
           <Link
-            href="/give"
+            href="https://example.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-brand-primary hover:bg-brand-primary/90 text-white px-8 py-3 rounded-sm font-semibold transition-all text-sm uppercase tracking-wide"
           >
-            Donate Now
+            Find Out More
           </Link>
         </div>
 

@@ -1,4 +1,5 @@
 import AboutChurchHero from "@/components/home/AboutChurchHero";
+import ChurchDescription from "@/components/about/ChurchDescription";
 import JourneyOfFaith from "@/components/about/JourneyOfFaith";
 import BishopBio from "@/components/about/BishopBio";
 import MissionValues from "@/components/about/MissionValues";
@@ -14,6 +15,7 @@ export default function AboutPage() {
   return (
     <>
       <AboutChurchHero />
+      <ChurchDescription />
       <JourneyOfFaith />
       <BishopBio />
       <MissionValues />

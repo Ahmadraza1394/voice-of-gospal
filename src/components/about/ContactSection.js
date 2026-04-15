@@ -40,21 +40,37 @@ export default function ContactSection() {
             <div className="space-y-4 mb-6">
               <div className="flex justify-between items-center border-b border-gray-700 pb-3">
                 <span className="text-brand-accent font-semibold">
-                  Sunday Service
+                  Sunday School
                 </span>
-                <span className="text-white">9:00 AM</span>
+                <span className="text-white">10:00 AM</span>
+              </div>
+
+              <div className="flex justify-between items-center border-b border-gray-700 pb-3">
+                <span className="text-brand-accent font-semibold">
+                  Sunday Worship Service
+                </span>
+                <span className="text-white">11:00 AM</span>
               </div>
 
               <div className="flex justify-between items-center border-b border-gray-700 pb-3">
                 <span className="text-white font-semibold">
-                  Midweek Service
+                  Wednesday Prayer
                 </span>
-                <span className="text-white">Wednesday 6:00 PM</span>
+                <span className="text-white">8:30 AM - 12:00 PM</span>
               </div>
 
               <div className="flex justify-between items-center border-b border-gray-700 pb-3">
-                <span className="text-white font-semibold">Prayer Meeting</span>
-                <span className="text-white">Friday 6:00 PM</span>
+                <span className="text-white font-semibold">
+                  Thursday Online Bible Study
+                </span>
+                <span className="text-white">8:00 PM - 9:00 PM</span>
+              </div>
+
+              <div className="flex justify-between items-center border-b border-gray-700 pb-3">
+                <span className="text-white font-semibold">
+                  Friday Night Prayer
+                </span>
+                <span className="text-white">8:00 PM - 12:00 AM</span>
               </div>
             </div>
 

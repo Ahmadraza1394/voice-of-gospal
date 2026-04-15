@@ -7,10 +7,11 @@ export default function MinistriesIntro() {
         </h2>
 
         <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-          Your call to impact lives begins is rooted in the Great Commission —
-          preaching, serving and empowering lives locally and globally. Our
-          ministries are designed to meet spiritual and physical needs,
-          fostering hope and transformation.
+          Our ministries are rooted in the Great Commission — preaching the
+          Gospel, serving our community, and empowering lives both locally and
+          globally. Through diverse programs and outreach initiatives, we meet
+          spiritual and physical needs, fostering hope, transformation, and
+          discipleship in Christ.
         </p>
       </div>
     </section>

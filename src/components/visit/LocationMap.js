@@ -99,8 +99,9 @@ export default function LocationMap() {
                   <p className="font-semibold text-gray-900 mb-1">
                     Office Hours
                   </p>
-                  <p className="text-gray-600">Mon-Fri: 9:00 - 16:00</p>
-                  <p className="text-gray-600">Sat-Sun: 10:00 - 14:00</p>
+                  <p className="text-gray-600">
+                    Monday-Friday: 9:00 AM - 4:00 PM
+                  </p>
                 </div>
               </div>
             </div>

@@ -183,10 +183,7 @@ export default function ContactInfo() {
                       Office Hours
                     </p>
                     <p className="text-gray-600 text-sm">
-                      Mon-Fri: 9:00 - 16:00
-                    </p>
-                    <p className="text-gray-600 text-sm">
-                      Sat-Sun: 10:00 - 14:00
+                      Monday-Friday: 9:00 AM - 4:00 PM
                     </p>
                   </div>
                 </div>
