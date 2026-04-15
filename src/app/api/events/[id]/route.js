@@ -13,7 +13,7 @@ export async function GET(req, { params }) {
     if (!event) {
       return NextResponse.json(
         { success: false, message: "Event not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -21,7 +21,7 @@ export async function GET(req, { params }) {
   } catch (error) {
     return NextResponse.json(
       { success: false, message: error.message },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -58,7 +58,7 @@ export async function PUT(req, { params }) {
     if (!event) {
       return NextResponse.json(
         { success: false, message: "Event not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -66,22 +66,22 @@ export async function PUT(req, { params }) {
   } catch (error) {
     return NextResponse.json(
       { success: false, message: error.message },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 // DELETE event
 export async function DELETE(req, { params }) {
-  tr// Temporarily disabled for development
-    // y {
+  try {
+    // Temporarily disabled for development
     // const auth = checkAuth(req);
     // if (!auth.authenticated) {
     //   return NextResponse.json(
     //     { success: false, message: "Unauthorized" },
     //     { status: 401 }
     //   );
-    }
+    // }
 
     await connectDB();
 
@@ -90,7 +90,7 @@ export async function DELETE(req, { params }) {
     if (!event) {
       return NextResponse.json(
         { success: false, message: "Event not found" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -98,7 +98,7 @@ export async function DELETE(req, { params }) {
   } catch (error) {
     return NextResponse.json(
       { success: false, message: error.message },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
