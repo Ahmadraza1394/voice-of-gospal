@@ -45,7 +45,7 @@ export default function LocationMap() {
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">Address</p>
                   <p className="text-gray-600">
-                    47-49 Edgewater Drive, Mattapan MA 02126
+                    49 Edgewater Dr, Mattapan, MA 02126
                   </p>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function LocationMap() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 mb-1">Email</p>
-                  <p className="text-gray-600">church@vogtabernacle.com</p>
+                  <p className="text-gray-600">communityatvgt@gmail.com</p>
                 </div>
               </div>
 

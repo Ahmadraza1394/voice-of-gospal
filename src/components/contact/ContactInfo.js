@@ -101,7 +101,7 @@ export default function ContactInfo() {
                       Address
                     </p>
                     <p className="text-gray-600 text-sm">
-                      47-49 Edgewater Drive, Mattapan MA 02126
+                      49 Edgewater Dr, Mattapan, MA 02126
                     </p>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ export default function ContactInfo() {
                       Email
                     </p>
                     <p className="text-gray-600 text-sm">
-                      Bishopnhomicil143@gmail.com
+                      communityatvgt@gmail.com
                     </p>
                   </div>
                 </div>
