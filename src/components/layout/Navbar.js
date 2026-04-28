@@ -20,7 +20,6 @@ const navLinks = [
 ];
 
 const globalMissionLinks = [
-  { href: "/global-mission", label: "Overview" },
   { href: "/global-mission/haiti", label: "Haiti" },
   { href: "/global-mission/dominican-republic", label: "Dominican Republic" },
   { href: "/global-mission/nigeria", label: "Nigeria" },
@@ -84,7 +83,8 @@ export default function Navbar() {
               onMouseEnter={() => setIsGlobalMissionOpen(true)}
               onMouseLeave={() => setIsGlobalMissionOpen(false)}
             >
-              <button
+              <Link
+                href="/global-mission"
                 className={`text-sm font-medium transition-colors flex items-center gap-1 ${
                   isActive("/global-mission")
                     ? "text-brand-primary font-semibold border-b-2 border-brand-primary pb-1"
@@ -105,7 +105,7 @@ export default function Navbar() {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </button>
+              </Link>
 
               {/* Invisible bridge to prevent dropdown from closing */}
               <div className="absolute top-full left-0 w-full h-2"></div>
@@ -199,29 +199,41 @@ export default function Navbar() {
 
               {/* Global Mission Mobile Dropdown */}
               <div>
-                <button
-                  onClick={() => setIsGlobalMissionOpen(!isGlobalMissionOpen)}
-                  className={`w-full flex items-center justify-between px-3 py-2 text-base font-medium rounded-md ${
-                    isActive("/global-mission")
-                      ? "bg-brand-primary text-white"
-                      : "text-gray-700 hover:bg-background-light hover:text-brand-primary"
-                  }`}
-                >
-                  Global Mission
-                  <svg
-                    className={`w-5 h-5 transition-transform ${isGlobalMissionOpen ? "rotate-180" : ""}`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                <div className="flex items-center">
+                  <Link
+                    href="/global-mission"
+                    className={`flex-1 px-3 py-2 text-base font-medium rounded-l-md ${
+                      isActive("/global-mission")
+                        ? "bg-brand-primary text-white"
+                        : "text-gray-700 hover:bg-background-light hover:text-brand-primary"
+                    }`}
+                    onClick={() => setIsOpen(false)}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
+                    Global Mission
+                  </Link>
+                  <button
+                    onClick={() => setIsGlobalMissionOpen(!isGlobalMissionOpen)}
+                    className={`px-3 py-2 text-base font-medium rounded-r-md ${
+                      isActive("/global-mission")
+                        ? "bg-brand-primary text-white"
+                        : "text-gray-700 hover:bg-background-light hover:text-brand-primary"
+                    }`}
+                  >
+                    <svg
+                      className={`w-5 h-5 transition-transform ${isGlobalMissionOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                </div>
 
                 {isGlobalMissionOpen && (
                   <div className="pl-4 mt-1 space-y-1">
