@@ -1,192 +1,84 @@
 "use client";
 
-import { useState } from "react";
-
-const donationAmounts = [25, 50, 100, 250, 500, 1000];
-
-const givingOptions = [
-  {
-    id: "general",
-    label: "General Fund",
-    description: "Support our overall ministry",
-  },
-  {
-    id: "missions",
-    label: "Global Missions",
-    description: "Reach the world with the Gospel",
-  },
-  {
-    id: "food-pantry",
-    label: "Food Pantry",
-    description: "Feed families in need",
-  },
-  {
-    id: "building",
-    label: "Building Fund",
-    description: "Expand our facilities",
-  },
-  {
-    id: "youth",
-    label: "Youth Ministry",
-    description: "Invest in the next generation",
-  },
-];
+import Image from "next/image";
 
 export default function DonationForm() {
-  const [selectedAmount, setSelectedAmount] = useState(100);
-  const [customAmount, setCustomAmount] = useState("");
-  const [givingOption, setGivingOption] = useState("general");
-  const [frequency, setFrequency] = useState("one-time");
-
-  const handleAmountClick = (amount) => {
-    setSelectedAmount(amount);
-    setCustomAmount("");
-  };
-
-  const handleCustomAmountChange = (e) => {
-    const value = e.target.value;
-    setCustomAmount(value);
-    if (value) {
-      setSelectedAmount(null);
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const amount = customAmount || selectedAmount;
-
-    // Here you would integrate with PayPal
-    // For now, we'll show an alert
-    alert(
-      `Processing ${frequency} donation of $${amount} to ${givingOptions.find((opt) => opt.id === givingOption)?.label}`,
-    );
-
-    // PayPal integration would go here
-    // Example: redirect to PayPal with the donation details
-  };
-
   return (
     <section className="py-16 md:py-20 lg:py-24 bg-white">
       <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="bg-gray-50 rounded-lg shadow-xl p-6 md:p-8 lg:p-10">
-          <form onSubmit={handleSubmit}>
-            {/* Frequency Selection */}
-            <div className="mb-8">
-              {/* <label className="block text-gray-900 font-semibold mb-4 text-lg">
-                Giving Frequency
-              </label> */}
-              {/* <div className="grid grid-cols-2 gap-4">
-                <button
-                  type="button"
-                  onClick={() => setFrequency("one-time")}
-                  className={`py-3 px-6 rounded-sm font-semibold transition-all ${
-                    frequency === "one-time"
-                      ? "bg-brand-primary text-white"
-                      : "bg-white text-gray-700 border-2 border-gray-300 hover:border-brand-primary"
-                  }`}
-                >
-                  One-Time Gift
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setFrequency("monthly")}
-                  className={`py-3 px-6 rounded-sm font-semibold transition-all ${
-                    frequency === "monthly"
-                      ? "bg-brand-primary text-white"
-                      : "bg-white text-gray-700 border-2 border-gray-300 hover:border-brand-primary"
-                  }`}
-                >
-                  Monthly Giving
-                </button>
-              </div> */}
-            </div>
-
-            {/* Amount Selection */}
-            <div className="mb-8">
-              <label className="block text-gray-900 font-semibold mb-4 text-lg">
-                Select Amount
-              </label>
-              <div className="grid grid-cols-3 gap-3 mb-4">
-                {donationAmounts.map((amount) => (
-                  <button
-                    key={amount}
-                    type="button"
-                    onClick={() => handleAmountClick(amount)}
-                    className={`py-3 px-4 rounded-sm font-semibold transition-all ${
-                      selectedAmount === amount && !customAmount
-                        ? "bg-brand-primary text-white"
-                        : "bg-white text-gray-700 border-2 border-gray-300 hover:border-brand-primary"
-                    }`}
-                  >
-                    ${amount}
-                  </button>
-                ))}
-              </div>
-
-              {/* Custom Amount */}
-              <div className="relative">
-                <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-semibold text-lg">
-                  $
-                </span>
-                <input
-                  type="number"
-                  placeholder="Custom Amount"
-                  value={customAmount}
-                  onChange={handleCustomAmountChange}
-                  className="w-full pl-8 pr-4 py-3 border-2 border-gray-300 rounded-sm focus:outline-none focus:border-brand-primary text-lg"
-                  min="1"
-                />
-              </div>
-            </div>
-
-            {/* Giving Option */}
-            <div className="mb-8">
-              <label className="block text-gray-900 font-semibold mb-4 text-lg">
-                Where would you like to give?
-              </label>
-              <div className="space-y-3">
-                {givingOptions.map((option) => (
-                  <label
-                    key={option.id}
-                    className={`flex items-start p-4 rounded-sm border-2 cursor-pointer transition-all ${
-                      givingOption === option.id
-                        ? "border-brand-primary bg-brand-primary/5"
-                        : "border-gray-300 hover:border-brand-primary"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="givingOption"
-                      value={option.id}
-                      checked={givingOption === option.id}
-                      onChange={(e) => setGivingOption(e.target.value)}
-                      className="mt-1 w-5 h-5 text-brand-primary focus:ring-brand-primary"
-                    />
-                    <div className="ml-3">
-                      <div className="font-semibold text-gray-900">
-                        {option.label}
-                      </div>
-                      <div className="text-sm text-gray-600">
-                        {option.description}
-                      </div>
-                    </div>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <div className="text-center">
-              <button
-                type="submit"
-                className="w-full md:w-auto bg-brand-primary hover:bg-brand-primary/90 text-white px-12 py-4 rounded-sm font-bold text-lg transition-all shadow-lg hover:shadow-xl"
-              >
-                Continue to PayPal
-              </button>
-              <p className="text-sm text-gray-600 mt-4">
-                You will be redirected to PayPal to complete your secure
-                donation
+          <div>
+            {/* Introduction Text */}
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                Support Our Mission
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Your generous donation helps us continue our mission to spread
+                the Gospel and serve our community.
               </p>
+            </div>
+
+            {/* PayPal Button and QR Code - Side by Side */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* PayPal Donate Button */}
+              <div className="text-center">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                  Donate via PayPal
+                </h3>
+                <form
+                  action="https://www.paypal.com/donate"
+                  method="post"
+                  target="_top"
+                >
+                  <input
+                    type="hidden"
+                    name="hosted_button_id"
+                    value="K2RN7YT2EVHL6"
+                  />
+                  <input
+                    type="image"
+                    src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+                    border="0"
+                    name="submit"
+                    title="PayPal - The safer, easier way to pay online!"
+                    alt="Donate with PayPal button"
+                    className="mx-auto"
+                  />
+                  <img
+                    alt=""
+                    border="0"
+                    src="https://www.paypal.com/en_US/i/scr/pixel.gif"
+                    width="1"
+                    height="1"
+                  />
+                </form>
+                <p className="text-sm text-gray-600 mt-4">
+                  Click the button above to donate securely via PayPal
+                </p>
+              </div>
+
+              {/* QR Code Payment Section */}
+              <div className="text-center">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">
+                  Or Scan to Donate
+                </h3>
+                <div className="flex justify-center">
+                  <div className="bg-white p-4 rounded-lg shadow-md">
+                    <div className="relative w-48 h-48 md:w-56 md:h-56">
+                      <Image
+                        src="/qr-code.jpeg"
+                        alt="Payment QR Code"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <p className="text-center text-sm text-gray-600 mt-3">
+                      Scan with your mobile device
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* PayPal Logo */}
@@ -221,7 +113,7 @@ export default function DonationForm() {
                 </svg>
               </div>
             </div>
-          </form>
+          </div>
         </div>
 
         {/* Trust Indicators */}

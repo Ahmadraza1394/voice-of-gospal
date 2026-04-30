@@ -72,12 +72,6 @@ export default function UpcomingEvents() {
         ) : filteredEvents.length === 0 ? (
           <div className="text-center py-12 bg-background-light rounded-lg">
             <p className="text-gray-600 mb-4">No events found.</p>
-            <button
-              onClick={() => setActiveCategory("All")}
-              className="text-brand-primary hover:text-brand-primary/80 font-semibold"
-            >
-              View All Events
-            </button>
           </div>
         ) : (
           <div className="space-y-6">

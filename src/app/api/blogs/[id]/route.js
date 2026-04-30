@@ -7,8 +7,9 @@ import { checkAuth } from "@/lib/auth";
 export async function GET(req, { params }) {
   try {
     await connectDB();
+    const { id } = await params;
 
-    const blog = await Blog.findById(params.id);
+    const blog = await Blog.findById(id);
 
     if (!blog) {
       return NextResponse.json(
@@ -38,6 +39,7 @@ export async function PUT(req, { params }) {
     }
 
     await connectDB();
+    const { id } = await params;
 
     const body = await req.json();
 
@@ -49,7 +51,7 @@ export async function PUT(req, { params }) {
         .replace(/(^-|-$)/g, "");
     }
 
-    const blog = await Blog.findByIdAndUpdate(params.id, body, {
+    const blog = await Blog.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
     });
@@ -83,8 +85,9 @@ export async function DELETE(req, { params }) {
     // }
 
     await connectDB();
+    const { id } = await params;
 
-    const blog = await Blog.findByIdAndDelete(params.id);
+    const blog = await Blog.findByIdAndDelete(id);
 
     if (!blog) {
       return NextResponse.json(

@@ -64,10 +64,12 @@ export default function EditBlog() {
     setSaving(true);
 
     try {
+      const token = localStorage.getItem("adminToken");
       const res = await fetch(`/api/blogs/${params.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });

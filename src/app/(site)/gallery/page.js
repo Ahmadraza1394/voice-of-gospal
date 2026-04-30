@@ -1,7 +1,5 @@
 import GalleryHero from "@/components/gallery/GalleryHero";
 import PhotoGallery from "@/components/gallery/PhotoGallery";
-import VideoGallery from "@/components/gallery/VideoGallery";
-import AudioMessages from "@/components/gallery/AudioMessages";
 import GalleryCTA from "@/components/gallery/GalleryCTA";
 
 export const metadata = {
@@ -14,8 +12,6 @@ export default function GalleryPage() {
     <>
       <GalleryHero />
       <PhotoGallery />
-      <VideoGallery />
-      <AudioMessages />
       <GalleryCTA />
     </>
   );

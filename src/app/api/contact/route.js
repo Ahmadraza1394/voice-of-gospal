@@ -1,6 +1,17 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+export const runtime = "nodejs";
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
 export async function POST(req) {
   try {
     const { name, email, subject, message } = await req.json();
@@ -8,7 +19,7 @@ export async function POST(req) {
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { success: false, message: "All fields are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -16,7 +27,18 @@ export async function POST(req) {
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         { success: false, message: "Invalid email address" },
-        { status: 400 }
+        { status: 400 },
+      );
+    }
+
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "Email service is not configured. Please set GMAIL_USER and GMAIL_APP_PASSWORD.",
+        },
+        { status: 500 },
       );
     }
 
@@ -29,6 +51,11 @@ export async function POST(req) {
     });
 
     const adminEmail = process.env.CONTACT_EMAIL_TO || process.env.GMAIL_USER;
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeSubject = escapeHtml(subject);
+    const safeMessage = escapeHtml(message);
 
     const userEmailTemplate = `
 <!DOCTYPE html>
@@ -49,13 +76,13 @@ export async function POST(req) {
       <h1>Thank You for Contacting Us!</h1>
     </div>
     <div class="content">
-      <p>Dear ${name},</p>
+      <p>Dear ${safeName},</p>
       <p>Thank you for reaching out to <strong>Voice of the Gospel Tabernacle</strong>. We have received your message and will respond as soon as possible.</p>
       
       <h3>Your Message Details:</h3>
-      <p><strong>Subject:</strong> ${subject}</p>
+      <p><strong>Subject:</strong> ${safeSubject}</p>
       <p><strong>Message:</strong></p>
-      <p style="background: white; padding: 15px; border-left: 4px solid #90221A; border-radius: 4px;">${message}</p>
+      <p style="background: white; padding: 15px; border-left: 4px solid #90221A; border-radius: 4px;">${safeMessage}</p>
       
       <p>We typically respond within 24-48 hours. If your matter is urgent, please feel free to call us directly.</p>
       
@@ -98,15 +125,15 @@ export async function POST(req) {
       <p>You have received a new message from the Voice of the Gospel website contact form.</p>
       
       <div class="info-box">
-        <p><span class="label">Name:</span> ${name}</p>
+        <p><span class="label">Name:</span> ${safeName}</p>
       </div>
       
       <div class="info-box">
-        <p><span class="label">Email:</span> <a href="mailto:${email}">${email}</a></p>
+        <p><span class="label">Email:</span> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
       </div>
       
       <div class="info-box">
-        <p><span class="label">Subject:</span> ${subject}</p>
+        <p><span class="label">Subject:</span> ${safeSubject}</p>
       </div>
       
       <div class="info-box">
@@ -115,11 +142,11 @@ export async function POST(req) {
       
       <h3>Message:</h3>
       <div class="message-box">
-        ${message.replace(/\n/g, '<br>')}
+        ${safeMessage.replace(/\n/g, "<br>")}
       </div>
       
       <p style="margin-top: 20px; padding: 15px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px;">
-        <strong>💡 Tip:</strong> Click "Reply" to respond directly to ${name} at ${email}
+        <strong>💡 Tip:</strong> Click "Reply" to respond directly to ${safeName} at ${safeEmail}
       </p>
     </div>
   </div>
@@ -153,7 +180,7 @@ export async function POST(req) {
         success: false,
         message: "Failed to send message. Please try again later.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

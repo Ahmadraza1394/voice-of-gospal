@@ -46,10 +46,12 @@ export default function NewBlog() {
     setLoading(true);
 
     try {
+      const token = localStorage.getItem("adminToken");
       const res = await fetch("/api/blogs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });

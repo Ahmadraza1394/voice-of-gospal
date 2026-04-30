@@ -58,15 +58,6 @@ export default function BlogPosts() {
             ) : filteredPosts.length === 0 ? (
               <div className="text-center py-12 bg-white rounded-lg shadow">
                 <p className="text-gray-600 mb-4">No blogs found.</p>
-                <button
-                  onClick={() => {
-                    setSelectedCategory("All");
-                    setSearchQuery("");
-                  }}
-                  className="text-brand-primary hover:text-brand-primary/80 font-semibold"
-                >
-                  View All Blogs
-                </button>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
