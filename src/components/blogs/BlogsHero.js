@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function BlogsHero() {
   return (
-    <section className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+    <section className="relative h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image

@@ -40,8 +40,33 @@ export default function LiveStream() {
     return match && match[7].length === 11 ? match[7] : null;
   };
 
+  const isChannelLiveUrl = (url) => {
+    if (!url) return false;
+    // Check if it's a channel live URL like youtube.com/@channelname/live
+    return url.includes("youtube.com/@") && url.includes("/live");
+  };
+
+  const getChannelEmbedUrl = (url) => {
+    if (!url) return null;
+    // Extract channel handle from URL like youtube.com/@channelname/live
+    const match = url.match(/youtube\.com\/@([^\/]+)/);
+    if (match) {
+      const channelHandle = match[1];
+      return `https://www.youtube.com/@${channelHandle}/live`;
+    }
+    return url;
+  };
+
   const videoId = livestream?.youtubeUrl
     ? extractYouTubeId(livestream.youtubeUrl)
+    : null;
+
+  const isChannelLive = livestream?.youtubeUrl
+    ? isChannelLiveUrl(livestream.youtubeUrl)
+    : false;
+
+  const channelLiveUrl = isChannelLive
+    ? getChannelEmbedUrl(livestream.youtubeUrl)
     : null;
 
   return (
@@ -67,7 +92,7 @@ export default function LiveStream() {
             {/* Video Player Area */}
             <div className="relative aspect-video w-full mb-8 overflow-hidden rounded-lg shadow-xl">
               {videoId ? (
-                // YouTube Embed
+                // YouTube Embed with specific video ID
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0`}
                   className="absolute inset-0 w-full h-full"
@@ -75,8 +100,46 @@ export default function LiveStream() {
                   allowFullScreen
                   title="Live Stream"
                 ></iframe>
+              ) : isChannelLive && channelLiveUrl ? (
+                // Channel Live URL - Show clickable link
+                <>
+                  <Image
+                    src="/images/VOICE-OF-THE-GOSPEL-TABERNACLE-BANNER-1.png"
+                    alt="Live Stream"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
+
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center px-4">
+                      <div className="w-16 h-16 md:w-20 md:h-20 bg-brand-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg
+                          className="w-8 h-8 md:w-10 md:h-10 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                      <p className="text-white text-lg md:text-xl font-semibold mb-4">
+                        Join Our Live Stream
+                      </p>
+                      <a
+                        href={channelLiveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-brand-primary hover:bg-brand-primary/90 text-white px-8 py-3 rounded-sm font-semibold transition-all uppercase tracking-wide text-sm shadow-lg hover:shadow-xl"
+                      >
+                        Watch Live on YouTube
+                      </a>
+                    </div>
+                  </div>
+                </>
               ) : (
-                // Fallback when no video
+                // Fallback when no video or channel live URL
                 <>
                   <Image
                     src="/images/VOICE-OF-THE-GOSPEL-TABERNACLE-BANNER-1.png"

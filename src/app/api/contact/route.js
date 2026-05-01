@@ -14,7 +14,7 @@ function escapeHtml(value) {
 
 export async function POST(req) {
   try {
-    const { name, email, subject, message } = await req.json();
+    const { name, email, phone, subject, message } = await req.json();
 
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
@@ -54,6 +54,7 @@ export async function POST(req) {
 
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
+    const safePhone = phone ? escapeHtml(phone) : null;
     const safeSubject = escapeHtml(subject);
     const safeMessage = escapeHtml(message);
 
@@ -81,6 +82,7 @@ export async function POST(req) {
       
       <h3>Your Message Details:</h3>
       <p><strong>Subject:</strong> ${safeSubject}</p>
+      ${safePhone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ""}
       <p><strong>Message:</strong></p>
       <p style="background: white; padding: 15px; border-left: 4px solid #90221A; border-radius: 4px;">${safeMessage}</p>
       
@@ -131,6 +133,14 @@ export async function POST(req) {
       <div class="info-box">
         <p><span class="label">Email:</span> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
       </div>
+      
+      ${
+        safePhone
+          ? `<div class="info-box">
+        <p><span class="label">Phone:</span> <a href="tel:${safePhone}">${safePhone}</a></p>
+      </div>`
+          : ""
+      }
       
       <div class="info-box">
         <p><span class="label">Subject:</span> ${safeSubject}</p>

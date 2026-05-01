@@ -46,12 +46,12 @@ export default function Navbar() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="relative h-16 w-16">
+            <div className="relative h-20 w-20">
               <Image
                 src="/images/1-VOICE-OF-THE-GOSPEL-TABERNACLE-LOGO-.png"
                 alt="Voice of the Gospel Tabernacle"
                 fill
-                sizes="48px"
+                sizes="80px"
                 className="object-contain"
                 priority
               />
@@ -67,9 +67,9 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-base font-semibold transition-colors ${
                   isActive(link.href)
-                    ? "text-brand-primary font-semibold border-b-2 border-brand-primary pb-1"
+                    ? "text-brand-primary font-bold border-b-2 border-brand-primary pb-1"
                     : "text-gray-700 hover:text-brand-primary"
                 }`}
               >
@@ -85,9 +85,9 @@ export default function Navbar() {
             >
               <Link
                 href="/global-mission"
-                className={`text-sm font-medium transition-colors flex items-center gap-1 ${
+                className={`text-base font-semibold transition-colors flex items-center gap-1 ${
                   isActive("/global-mission")
-                    ? "text-brand-primary font-semibold border-b-2 border-brand-primary pb-1"
+                    ? "text-brand-primary font-bold border-b-2 border-brand-primary pb-1"
                     : "text-gray-700 hover:text-brand-primary"
                 }`}
               >

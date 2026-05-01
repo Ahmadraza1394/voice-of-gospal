@@ -8,7 +8,6 @@ const ministries = [
     title: "Women's Ministry",
     description:
       "Empowering women through fellowship, Bible study, prayer, and spiritual growth. Building a supportive community where women can grow in faith, discover their purpose, and serve God together.",
-    link: "/contact",
   },
   {
     image: "/images/VOICE-OF-THE-GOSPEL-TABERNACLE-BANNER-8.png",
@@ -16,7 +15,6 @@ const ministries = [
     title: "Men's Ministry",
     description:
       "Building strong Christian men through brotherhood, accountability, and spiritual mentorship. Equipping men to be godly leaders in their families, workplaces, and communities.",
-    link: "/contact",
   },
   {
     image: "/images/VOICE-OF-THE-GOSPEL-TABERNACLE-BANNER-11.png",
@@ -24,7 +22,6 @@ const ministries = [
     title: "Youth Ministry",
     description:
       "Nurturing the next generation through dynamic worship, biblical teaching, and life-changing programs including Afterschool Program, Youth Homelessness Support, and Youth Jobs Initiative.",
-    link: "/contact",
   },
   {
     image: "/images/VOICE-OF-THE-GOSPEL-TABERNACLE-BANNER-1.png",
@@ -32,7 +29,6 @@ const ministries = [
     title: "Music Ministry",
     description:
       "Leading worship and praise through anointed music that glorifies God and inspires hearts. Our choir, musicians, and worship team create an atmosphere of worship that draws people into God's presence.",
-    link: "/contact",
   },
   {
     image: "/images/VOICE-OF-THE-GOSPEL-TABERNACLE-BANNER-13.png",
@@ -40,7 +36,6 @@ const ministries = [
     title: "Food Distribution",
     description:
       "Serving our community with love by providing essential food supplies to families in need. Our food pantry is open to all, offering groceries and hope through Christ's compassion.",
-    link: "/contact",
   },
 ];
 
@@ -75,16 +70,18 @@ export default function MinistryCards() {
                 <p className="text-gray-600 text-base leading-relaxed mb-6">
                   {ministry.description}
                 </p>
-
-                <Link
-                  href={ministry.link}
-                  className="inline-block border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white px-6 py-2 rounded-sm font-semibold transition-all uppercase tracking-wide text-sm"
-                >
-                  Learn More
-                </Link>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link
+            href="/contact"
+            className="inline-block bg-brand-primary hover:bg-brand-primary/90 text-white px-8 py-3 rounded-sm font-semibold transition-all uppercase tracking-wide text-sm"
+          >
+            Contact Us to Learn More
+          </Link>
         </div>
       </div>
     </section>

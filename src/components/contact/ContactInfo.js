@@ -6,6 +6,7 @@ export default function ContactInfo() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
   });
@@ -37,6 +38,7 @@ export default function ContactInfo() {
         setFormData({
           name: "",
           email: "",
+          phone: "",
           subject: "",
           message: "",
         });
@@ -101,7 +103,7 @@ export default function ContactInfo() {
                       Address
                     </p>
                     <p className="text-gray-600 text-sm">
-                      49 Edgewater Dr, Mattapan, MA 02126
+                      47-49 Edgewater Dr, Mattapan, MA 02126
                     </p>
                   </div>
                 </div>
@@ -122,7 +124,7 @@ export default function ContactInfo() {
                       Mailing Address
                     </p>
                     <p className="text-gray-600 text-sm">
-                      P.O. Box 260654, Mattapan MA 02126
+                      P.O. Box 260564, Mattapan, MA 02126
                     </p>
                   </div>
                 </div>
@@ -142,7 +144,7 @@ export default function ContactInfo() {
                     <p className="font-semibold text-gray-900 text-sm mb-1">
                       Phone
                     </p>
-                    <p className="text-gray-600 text-sm">(617) 980-7866</p>
+                    <p className="text-gray-600 text-sm">(857) 312-0663</p>
                   </div>
                 </div>
 
@@ -302,6 +304,15 @@ export default function ContactInfo() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-brand-primary text-sm"
+                />
+
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Your Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:border-brand-primary text-sm"
                 />
 

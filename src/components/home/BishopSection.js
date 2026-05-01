@@ -90,12 +90,8 @@ export default function BishopSection() {
             <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
               Our mission is to empower believers through the Word of God,
               fostering a community that reflects the love of Christ in every
-              action. We believe in
-            </p>
-
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-              the transformative power of the Gospel to change lives and
-              communities.
+              action. We believe in the transformative power of the Gospel to
+              change lives and communities.
             </p>
 
             <Link

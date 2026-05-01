@@ -21,7 +21,8 @@ export default function MapFooter() {
             Map to Our Location
           </h3>
           <p className="text-gray-600 text-sm">
-            Voice of the Gospel Tabernacle — 49 Edgewater Dr, Mattapan, MA 02126
+            Voice of the Gospel Tabernacle — 47-49 Edgewater Dr, Mattapan, MA
+            02126
           </p>
         </div>
       </div>
