@@ -163,9 +163,7 @@ export default function ContactInfo() {
                     <p className="font-semibold text-gray-900 text-sm mb-1">
                       Email
                     </p>
-                    <p className="text-gray-600 text-sm">
-                      communityatvgt@gmail.com
-                    </p>
+                    <p className="text-gray-600 text-sm">nhomicil@yahoo.com</p>
                   </div>
                 </div>
 
