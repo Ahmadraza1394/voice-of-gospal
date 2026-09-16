@@ -6,17 +6,21 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Container from "./Container";
 
+// Main nav links (removed watch, gallery, visit, blogs to avoid clutter)
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/ministries", label: "Ministries" },
-  { href: "/watch", label: "Watch" },
   { href: "/events", label: "Events" },
-  { href: "/give", label: "Give" },
+  { href: "/contact", label: "Contact" },
+];
+
+// Grouped dropdown items
+const mediaLinks = [
+  { href: "/watch", label: "Watch" },
   { href: "/visit", label: "Visit" },
   { href: "/gallery", label: "Gallery" },
   { href: "/blogs", label: "Blogs" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const globalMissionLinks = [
@@ -31,6 +35,7 @@ const globalMissionLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isGlobalMissionOpen, setIsGlobalMissionOpen] = useState(false);
+  const [isMediaOpen, setIsMediaOpen] = useState(false);
   const pathname = usePathname();
 
   const isActive = (href) => {
@@ -39,6 +44,8 @@ export default function Navbar() {
     }
     return pathname.startsWith(href);
   };
+
+  const isMediaActive = mediaLinks.some((link) => isActive(link.href));
 
   return (
     <nav className="font-lato bg-background-main shadow-sm">
@@ -56,9 +63,6 @@ export default function Navbar() {
                 priority
               />
             </div>
-            {/* <span className="text-lg font-semibold text-brand-primary hidden sm:block">
-              Voice of the Gospel Tabernacle
-            </span> */}
           </Link>
 
           {/* Desktop Navigation */}
@@ -77,6 +81,60 @@ export default function Navbar() {
               </Link>
             ))}
 
+            {/* Media / Resources Dropdown */}
+            <div
+              className="relative group"
+              onMouseEnter={() => setIsMediaOpen(true)}
+              onMouseLeave={() => setIsMediaOpen(false)}
+            >
+              <button
+                className={`text-base font-semibold transition-colors flex items-center gap-1 py-2 ${
+                  isMediaActive
+                    ? "text-brand-primary font-bold border-b-2 border-brand-primary pb-1"
+                    : "text-gray-700 hover:text-brand-primary"
+                }`}
+              >
+                Media & More
+                <svg
+                  className={`w-4 h-4 transition-transform ${isMediaOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              <div className="absolute top-full left-0 w-full h-2"></div>
+
+              {isMediaOpen && (
+                <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-100">
+                  {mediaLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`block px-4 py-2 text-sm transition-colors ${
+                        isActive(link.href)
+                          ? "bg-gray-100 text-brand-primary font-bold"
+                          : "text-gray-700 hover:bg-brand-primary hover:text-white"
+                      }`}
+                      onClick={() => {
+                        setIsMediaOpen(false);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {/* Global Mission Dropdown */}
             <div
               className="relative group"
@@ -85,7 +143,7 @@ export default function Navbar() {
             >
               <Link
                 href="/global-mission"
-                className={`text-base font-semibold transition-colors flex items-center gap-1 ${
+                className={`text-base font-semibold transition-colors flex items-center gap-1 py-2 ${
                   isActive("/global-mission")
                     ? "text-brand-primary font-bold border-b-2 border-brand-primary pb-1"
                     : "text-gray-700 hover:text-brand-primary"
@@ -93,7 +151,7 @@ export default function Navbar() {
               >
                 Global Mission
                 <svg
-                  className="w-4 h-4"
+                  className={`w-4 h-4 transition-transform ${isGlobalMissionOpen ? "rotate-180" : ""}`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -107,11 +165,10 @@ export default function Navbar() {
                 </svg>
               </Link>
 
-              {/* Invisible bridge to prevent dropdown from closing */}
               <div className="absolute top-full left-0 w-full h-2"></div>
 
               {isGlobalMissionOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-100">
+                <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-md shadow-lg py-2 z-50 border border-gray-100">
                   {globalMissionLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -129,9 +186,10 @@ export default function Navbar() {
               )}
             </div>
 
+            {/* Give Button */}
             <Link
               href="/give"
-              className="bg-green-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all hover:bg-green-700 hover:shadow-lg"
+              className="bg-green-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all hover:bg-green-700 hover:shadow-lg ml-2"
             >
               Give Now
             </Link>
@@ -197,7 +255,52 @@ export default function Navbar() {
                 </Link>
               ))}
 
-              {/* Global Mission Mobile Dropdown */}
+              {/* Media Mobile Accordion */}
+              <div>
+                <button
+                  onClick={() => setIsMediaOpen(!isMediaOpen)}
+                  className={`w-full flex items-center justify-between px-3 py-2 text-base font-medium rounded-md ${
+                    isMediaActive
+                      ? "bg-brand-primary text-white"
+                      : "text-gray-700 hover:bg-background-light hover:text-brand-primary"
+                  }`}
+                >
+                  <span>Media & More</span>
+                  <svg
+                    className={`w-5 h-5 transition-transform ${isMediaOpen ? "rotate-180" : ""}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                {isMediaOpen && (
+                  <div className="pl-4 mt-1 space-y-1">
+                    {mediaLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block px-3 py-2 text-sm text-gray-600 hover:bg-background-light hover:text-brand-primary rounded-md"
+                        onClick={() => {
+                          setIsOpen(false);
+                          setIsMediaOpen(false);
+                        }}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Global Mission Mobile Accordion */}
               <div>
                 <div className="flex items-center">
                   <Link
@@ -254,6 +357,7 @@ export default function Navbar() {
                 )}
               </div>
 
+              {/* Give Mobile Button */}
               <Link
                 href="/give"
                 className="block mt-4 bg-green-600 text-white px-6 py-3 rounded-full text-center text-sm font-semibold transition-all hover:bg-green-700"
